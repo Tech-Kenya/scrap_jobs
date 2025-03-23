@@ -13,11 +13,14 @@ Before running the script, ensure you have the following installed:
 ## Installation
 
 1. Clone this repository or download the script:
+
    ```bash
-   git clone 
+   git clonehttps://github.com/Tech-Kenya/scrap_jobs.git
    cd python_scrap_jobs
    ```
+
 2. Create a virtual environment and install all dependecies:
+
     ```bash
     python -m venv venv
     source venv/bin/activate
@@ -28,12 +31,21 @@ Before running the script, ensure you have the following installed:
     CHROMEDRIVER_PATH=/path/to/chromedriver
     ``` -->
 4. Run the script:
+
     ```bash
     python main.py
     ```
-5. The script will scrape the job listings and save the data to a JSON file in the `data` directory.
 
-## TODO:
+5. Run streamlit app:
+
+    ```bash
+    streamlit run jobs.py
+    ```
+
+5. The script will scrape the job listings and save the data to a JSON file in the `remote_ict_jobs.json` file.
+
+## TODO
+
 - [ ] Add support for other job listing websites.
 - [ ] Improve the data extraction process.
 - [ ] Add support for sending the data to an API/database.

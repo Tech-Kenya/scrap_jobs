@@ -8,6 +8,12 @@ from bs4 import BeautifulSoup
 import json
 import os
 import time
+import re  # For cleaning data
+
+# ----- CONFIGURATION -----
+OUTPUT_FILE = "remote_ict_jobs.json"  # File to save results
+SEARCH_TERMS = ["ICT", "Information Technology", "Software", "Developer", "Engineer", "Programming", "Cybersecurity"] # Keywords for filtering
+# ----- END CONFIGURATION -----
 
 # Function to initialize WebDriver in headless mode
 def initialize_driver():
@@ -25,8 +31,13 @@ def initialize_driver():
     print("✅ WebDriver initialized.")
     return driver
 
+def clean_text(text):
+    """Cleans the text to remove unwanted characters."""
+    text = re.sub(r"\s+", " ", text).strip()  # Remove extra spaces
+    return text
+
 # Function to scrape job data
-def scrape_jobs(driver):
+def scrape_jobs(driver, search_terms): # Added search_terms parameter
     print("🌍 Navigating to job listings page...")
     url = "https://www.workatastartup.com/jobs"
     driver.get(url)
@@ -63,26 +74,31 @@ def scrape_jobs(driver):
             salary_element = job.find('span', class_='text-gray-500')
             job_link = title_element['href'] if title_element and title_element.has_attr('href') else None
 
-            title = title_element.text.strip() if title_element else "No Title"
-            company = company_element.text.strip() if company_element else "No Company"
-            location = location_element.text.strip() if location_element else "No Location"
-            salary = salary_element.text.strip() if salary_element else "Not Specified"
+            title = clean_text(title_element.text.strip()) if title_element else "No Title"
+            company = clean_text(company_element.text.strip()) if company_element else "No Company"
+            location = clean_text(location_element.text.strip()) if location_element else "No Location"
+            salary = clean_text(salary_element.text.strip()) if salary_element else "Not Specified"
 
             # Ensure the correct application URL
             application_url = job_link if job_link.startswith("http") else f"https://www.workatastartup.com{job_link}"
 
-            job_data = {
-                "title": title,
-                "company": company,
-                "location": location,
-                "salary": salary,
-                "application_url": application_url
-            }
+            # Filter by keywords *before* creating the job_data dictionary
+            if any(term.lower() in title.lower() or term.lower() in company.lower() for term in search_terms):
+                job_data = {
+                    "title": title,
+                    "company": company,
+                    "location": location,
+                    "salary": salary,
+                    "link": application_url, # Changed application_url to link for consistency
+                    "source": "workatastartup.com" #Added the source
+                }
 
-            job_list.append(job_data)
+                job_list.append(job_data)
 
-            # Print progress update
-            print(f"✅ [{index}/{len(jobs)}] {title} at {company} - {location}")
+                # Print progress update
+                print(f"✅ [{index}/{len(jobs)}] {title} at {company} - {location}")
+            else:
+                 print(f"⏩ [{index}/{len(jobs)}] {title} at {company} - {location} (Skipped - Keyword Filter)")
 
         return job_list
 
@@ -94,12 +110,26 @@ def scrape_jobs(driver):
         driver.quit()
         print("🛑 WebDriver session closed.")
 
-# Function to save data to a JSON file
-def save_to_file(job_data):
+# Function to save data to a JSON file, appends to existing file
+def save_to_file(job_data, filename): #Added filename parameter
     try:
-        with open("jobs.json", "w") as file:
-            json.dump(job_data, file, indent=4)
-        print(f"📂 Data saved successfully! ({len(job_data)} jobs) → jobs.json")
+        # Load existing data, if the file exists
+        if os.path.exists(filename):
+            with open(filename, 'r', encoding='utf-8') as f:
+                try:
+                    existing_data = json.load(f)
+                except json.JSONDecodeError:
+                    existing_data = [] #Start with an empty list if JSON is corrupted
+        else:
+            existing_data = []
+
+        # Append new job data to existing data
+        all_data = existing_data + job_data
+
+        with open(filename, "w", encoding="utf-8") as file:  # Corrected encoding
+            json.dump(all_data, file, indent=4, ensure_ascii=False) # Added ensure_ascii
+
+        print(f"📂 Data saved successfully! ({len(job_data)} jobs) → {filename}")
     except Exception as e:
         print(f"❌ Error saving data: {e}")
 
@@ -107,10 +137,10 @@ def save_to_file(job_data):
 def main():
     print("🚀 Starting job scraping process...")
     driver = initialize_driver()
-    job_data = scrape_jobs(driver)
+    job_data = scrape_jobs(driver, SEARCH_TERMS) # Pass search terms to scrape_jobs
 
     if job_data:
-        save_to_file(job_data)
+        save_to_file(job_data, OUTPUT_FILE) #Pass filename to save_to_file
     else:
         print("⚠️ No job data found. Exiting.")
 
