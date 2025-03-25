@@ -15,7 +15,7 @@ Before running the script, ensure you have the following installed:
 1. Clone this repository or download the script:
 
    ```bash
-   git clonehttps://github.com/Tech-Kenya/scrap_jobs.git
+   git clone https://github.com/Tech-Kenya/scrap_jobs.git
    cd python_scrap_jobs
    ```
 
@@ -26,6 +26,8 @@ Before running the script, ensure you have the following installed:
     source venv/bin/activate
     pip install -r requirements.txt
     ```
+
+   ##### pip might be slow, checkout uv (<https://docs.astral.sh/uv/getting-started/installation/>)
 <!-- 3. Create a `.env` file in the root directory and add the following:
     ```env
     CHROMEDRIVER_PATH=/path/to/chromedriver
@@ -49,5 +51,3 @@ Before running the script, ensure you have the following installed:
 - [ ] Add support for other job listing websites.
 - [ ] Improve the data extraction process.
 - [ ] Add support for sending the data to an API/database.
-
-[Images](./images/Screenshot%20From%202025-02-14%2018-16-42.png)

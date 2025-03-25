@@ -1,4 +1,4 @@
-[
+export const jobs = [
     {
         "title": "Lead Principal Engineer",
         "company": "SnapMagic (S15)",
@@ -8,11 +8,11 @@
         "source": "workatastartup.com"
     },
     {
-        "title": "AI Engineer - Payments & Processing",
+        "title": "AI Engineer - Growth",
         "company": "Harper (W25)",
         "location": "fulltime",
         "salary": "Not Specified",
-        "link": "https://www.ycombinator.com/companies/harper/jobs/yy0PujJ-ai-engineer-payments-processing",
+        "link": "https://www.ycombinator.com/companies/harper/jobs/K1x5iWH-ai-engineer-growth",
         "source": "workatastartup.com"
     },
     {
@@ -37,22 +37,6 @@
         "location": "intern",
         "salary": "Not Specified",
         "link": "https://www.ycombinator.com/companies/caseflood-ai/jobs/VQeZtOe-machine-learning-engineer-mle-intern",
-        "source": "workatastartup.com"
-    },
-    {
-        "title": "Senior Fullstack Engineer",
-        "company": "Helpcare AI (F24)",
-        "location": "fulltime",
-        "salary": "Not Specified",
-        "link": "https://www.ycombinator.com/companies/helpcare-ai/jobs/iuk6sAt-senior-fullstack-engineer",
-        "source": "workatastartup.com"
-    },
-    {
-        "title": "Founding Engineer",
-        "company": "Sphinx (F24)",
-        "location": "fulltime",
-        "salary": "Not Specified",
-        "link": "https://www.ycombinator.com/companies/sphinx/jobs/mlOP28j-founding-engineer",
         "source": "workatastartup.com"
     },
     {
@@ -112,35 +96,35 @@
         "source": "workatastartup.com"
     },
     {
-        "title": "forward deployed engineer or head of customer (coding skills necessary)",
+        "title": "engineering",
         "company": "Wordware (S24)",
         "location": "fulltime",
         "salary": "Not Specified",
-        "link": "https://www.ycombinator.com/companies/wordware/jobs/rO10pMV-forward-deployed-engineer-or-head-of-customer-coding-skills-necessary",
+        "link": "https://www.ycombinator.com/companies/wordware/jobs/NXAEgOb-engineering",
         "source": "workatastartup.com"
     },
     {
-        "title": "Senior Engineer",
+        "title": "Golang Developer / Full-Stack Engineer",
         "company": "Corgi (S24)",
         "location": "fulltime",
         "salary": "Not Specified",
-        "link": "https://www.ycombinator.com/companies/corgi/jobs/YsjMygb-senior-engineer",
+        "link": "https://www.ycombinator.com/companies/corgi/jobs/1iSMdrS-golang-developer-full-stack-engineer",
         "source": "workatastartup.com"
     },
     {
-        "title": "Paid Gap Year (before college) - Engineering",
+        "title": "Software Engineer",
         "company": "Corgi (S24)",
         "location": "fulltime",
         "salary": "Not Specified",
-        "link": "https://www.ycombinator.com/companies/corgi/jobs/HmURH6G-paid-gap-year-before-college-engineering",
+        "link": "https://www.ycombinator.com/companies/corgi/jobs/lUmx2ON-software-engineer",
         "source": "workatastartup.com"
     },
     {
-        "title": "Founding Forward Deployed Engineer",
+        "title": "Founding Engineer (Full Stack + Dev Ops)",
         "company": "Phonely (S24)",
         "location": "fulltime",
         "salary": "Not Specified",
-        "link": "https://www.ycombinator.com/companies/phonely/jobs/Raj2SfD-founding-forward-deployed-engineer",
+        "link": "https://www.ycombinator.com/companies/phonely/jobs/cfkxRUA-founding-engineer-full-stack-dev-ops",
         "source": "workatastartup.com"
     },
     {
@@ -149,22 +133,6 @@
         "location": "fulltime",
         "salary": "Not Specified",
         "link": "https://www.ycombinator.com/companies/phonely/jobs/YIcOA27-founding-engineer-backend",
-        "source": "workatastartup.com"
-    },
-    {
-        "title": "Deployment Software Engineer",
-        "company": "Entangl (S24)",
-        "location": "fulltime",
-        "salary": "Not Specified",
-        "link": "https://www.ycombinator.com/companies/entangl/jobs/Uqq4qa2-deployment-software-engineer",
-        "source": "workatastartup.com"
-    },
-    {
-        "title": "Full Stack Engineer",
-        "company": "Entangl (S24)",
-        "location": "fulltime",
-        "salary": "Not Specified",
-        "link": "https://www.ycombinator.com/companies/entangl/jobs/2Yyvqxs-full-stack-engineer",
         "source": "workatastartup.com"
     },
     {
@@ -216,19 +184,51 @@
         "source": "workatastartup.com"
     },
     {
-        "title": "Founding Senior Software Engineer (Forward Deployed)",
-        "company": "Retell AI (W24)",
-        "location": "fulltime",
-        "salary": "Not Specified",
-        "link": "https://www.ycombinator.com/companies/retell-ai/jobs/1okdYK9-founding-senior-software-engineer-forward-deployed",
-        "source": "workatastartup.com"
-    },
-    {
         "title": "Founding Senior Software Engineer (Full Stack)",
         "company": "Retell AI (W24)",
         "location": "fulltime",
         "salary": "Not Specified",
         "link": "https://www.ycombinator.com/companies/retell-ai/jobs/m849yyY-founding-senior-software-engineer-full-stack",
         "source": "workatastartup.com"
+    },
+    {
+        "title": "Founding Forward Deployed AI Engineer (Solution Engineer)",
+        "company": "Retell AI (W24)",
+        "location": "fulltime",
+        "salary": "Not Specified",
+        "link": "https://www.ycombinator.com/companies/retell-ai/jobs/1okdYK9-founding-forward-deployed-ai-engineer-solution-engineer",
+        "source": "workatastartup.com"
+    },
+    {
+        "title": "Solutions Engineer",
+        "company": "Brainbase (W24)",
+        "location": "fulltime",
+        "salary": "Not Specified",
+        "link": "https://www.ycombinator.com/companies/brainbase/jobs/z0Vak3u-solutions-engineer",
+        "source": "workatastartup.com"
+    },
+    {
+        "title": "Founding Infrastructure Engineer",
+        "company": "Brainbase (W24)",
+        "location": "fulltime",
+        "salary": "Not Specified",
+        "link": "https://www.ycombinator.com/companies/brainbase/jobs/DM9lpD9-founding-infrastructure-engineer",
+        "source": "workatastartup.com"
+    },
+    {
+        "title": "Backend Software Engineer",
+        "company": "Artos (W24)",
+        "location": "fulltime",
+        "salary": "Not Specified",
+        "link": "https://www.ycombinator.com/companies/artos/jobs/Yxv2if4-backend-software-engineer",
+        "source": "workatastartup.com"
+    },
+    {
+        "title": "Founding Full Stack Engineer",
+        "company": "OffDeal (W24)",
+        "location": "fulltime",
+        "salary": "Not Specified",
+        "link": "https://www.ycombinator.com/companies/offdeal/jobs/99yJvlo-founding-full-stack-engineer",
+        "source": "workatastartup.com"
     }
-]
+];

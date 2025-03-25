@@ -2,13 +2,14 @@ import streamlit as st
 import json
 
 # Configuration
-JOB_DATA_FILE = "remote_ict_jobs.json"  # Same as the scrapper's output file
+JOB_DATA_FILE = "jobs.json"  # Same as the scrapper's output file
 PAGE_TITLE = "Remote ICT Job Board"
-PAGE_ICON = ":computer:" # Emojis are supported
+PAGE_ICON = ":computer:"  # Emojis are supported
 
 # --- Streamlit App ---
 st.set_page_config(page_title=PAGE_TITLE, page_icon=PAGE_ICON)
 st.title(PAGE_TITLE)
+
 
 @st.cache_data  # Cache the data to avoid reloading on every interaction
 def load_job_data(filename):
@@ -18,10 +19,14 @@ def load_job_data(filename):
             data = json.load(f)
         return data
     except FileNotFoundError:
-        st.error(f"Error: Job data file '{filename}' not found. Run the scrapper first.")
+        st.error(
+            f"Error: Job data file '{filename}' not found. Run the scrapper first."
+        )
         return None  # or return []
     except json.JSONDecodeError:
-        st.error(f"Error: Invalid JSON format in '{filename}'. Check the scrapper's output.")
+        st.error(
+            f"Error: Invalid JSON format in '{filename}'. Check the scrapper's output."
+        )
         return None
     except Exception as e:
         st.error(f"Error loading job data: {e}")
@@ -35,11 +40,11 @@ def display_jobs(jobs):
         return
 
     for job in jobs:
-        with st.container(): # Creates a distinct, visually separable job listing
+        with st.container():  # Creates a distinct, visually separable job listing
             st.subheader(job["title"])
             st.write(f"**Company:** {job['company']}")
-            st.write(f"**Source:** {job['source']}") # Added source for clarity
-            st.write(f"[Apply Now]({job['link']})") # Creates a clickable link
+            st.write(f"**Source:** {job['source']}")  # Added source for clarity
+            st.write(f"[Apply Now]({job['link']})")  # Creates a clickable link
             st.markdown("---")  # Adds a horizontal line between jobs
 
 
@@ -49,8 +54,10 @@ def filter_jobs(jobs, search_term):
         return jobs  # Return all jobs if no search term is provided
 
     filtered_jobs = [
-        job for job in jobs
-        if search_term.lower() in job["title"].lower() or search_term.lower() in job["company"].lower()
+        job
+        for job in jobs
+        if search_term.lower() in job["title"].lower()
+        or search_term.lower() in job["company"].lower()
     ]
     return filtered_jobs
 
@@ -67,7 +74,9 @@ def main():
         st.header("Filter Jobs")
         search_term = st.text_input("Search by title or company:", "")
         st.markdown("---")
-        st.info("This app displays remote ICT jobs scraped from various websites.  Run the scrapper.py script to update the data.")
+        st.info(
+            "This app displays remote ICT jobs scraped from various websites.  Run the scrapper.py script to update the data."
+        )
 
     # Filter and display jobs
     filtered_jobs = filter_jobs(jobs, search_term)
